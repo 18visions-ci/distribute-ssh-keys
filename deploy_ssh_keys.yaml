@@ -1,0 +1,17 @@
+---
+- name: Distribute SSH public keys
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Ensure .ssh directory exists
+      file:
+        path: ~/.ssh
+        state: directory
+        mode: '0700'
+
+    - name: Copy public SSH key to authorized_keys
+      authorized_key:
+        user: "{{ ansible_user }}"
+        state: present
+        key: "{{ lookup('file', '~/.ssh/ansible_automation_key.pub') }}"
