@@ -17,4 +17,4 @@
       authorized_key:
         user: "{{ ansible_user }}"
         state: present
-        key: "{{ lookup('file', '/home/semaphore/.ssh/ansible_automation_key.pub') }}"
+        key: "{{ lookup('file', '/home/nick/.ssh/ansible_automation_key.pub') }}"
